@@ -1,9 +1,24 @@
+import { Button } from '@/components/ui/button'
 import React from 'react'
+import Link from 'next/link'
 
-const landingpage = () => {
+const Landingpage = () => {
   return (
-    <div>landing page unprotected</div>
+    <div>
+      Landing page(unprotected)
+      <div>
+        <Link href="../sign-in">
+          <Button>
+            Login
+          </Button>
+        </Link><Link href="../sign-up">
+          <Button>
+            Register
+          </Button>
+        </Link>
+      </div>
+    </div>
   )
 }
 
-export default landingpage;
+export default Landingpage

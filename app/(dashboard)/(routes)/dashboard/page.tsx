@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 
 const dashboard = () => {
   return (
-   <Button variant={'destructive'}></Button>
+   <div>this is dashboard page (protected)</div>
   )
 }
 
