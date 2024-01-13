@@ -1,14 +1,11 @@
-import { auth } from "@clerk/nextjs"
-import { NextResponse } from "next/server"
-import { Configuration } from "openai";
-import { OpenAI } from "openai";
+import { auth } from "@clerk/nextjs";
+import { NextFetchEvent, NextResponse } from "next/server";
+import OpenAI from "openai";
 
-
-const configuration = new Configuration(
-    { apiKey: process.env.OPENAI_API_KEY, }
-);
-
-const opneai = new OpenAI(configuration);
+//this is what openai wants us to use in the new deployment.
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+})
 
 export async function POST(
     req: Request
@@ -17,24 +14,27 @@ export async function POST(
         const { userId } = auth();
         const body = await req.json();
         const { messages } = body;
-        if (!userId) {
-            return new NextResponse("Unauthorised", { status: 401 });
+ if (!userId) {
+            return new NextResponse("Unauthorized", { status: 401 });
         }
-        if (!configuration.apiKey) {
-            return new NextResponse("OPenAI API key not configured", { status: 500 });
+
+        if (!openai.apiKey) {
+            return new NextResponse("OpenAI API key not configured", { status: 500});
         }
+
         if (!messages) {
-            return new NextResponse("Messages are requires", { status: 400 });
+            return new NextResponse("Messages are required", { status:400 });
         }
-        const response = await opneai.createChatCompletion({
+        
+        const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages
         });
-        return NextResponse.json(response.data.choices[0].message);
-    }
 
-    catch (error) {
-        console.log("[CONVERSATION_ERROR]", error);
-        return new NextResponse("Internal error", { status: 500 });
+        return NextResponse.json(response.choices[0].message);  //the data property is not identified when I use this code. 
+
+    } catch (error) {
+        console.log("[CONVERSATION_ERROR]", error );
+        return new NextResponse("Internal Error", { status: 500 });
     }
 }

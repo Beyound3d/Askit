@@ -5,5 +5,7 @@ npx shadcn-ui@latest init
 npm install @clerk/nextjs
 # install open ai
 npm i openai
-
-
+# problem
+"openai": "^4.24.2"
+# install axios
+npm i axios
