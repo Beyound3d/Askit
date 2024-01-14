@@ -11,4 +11,6 @@ npm i openai
 npm i axios
 # install avatar from shadecn
 npx shadcn-ui@latest add avatar
+# install react markdown
+npm i react-markdown
 
