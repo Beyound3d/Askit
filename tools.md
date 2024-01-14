@@ -13,4 +13,9 @@ npm i axios
 npx shadcn-ui@latest add avatar
 # install react markdown
 npm i react-markdown
-
+# install replicate 
+npm install replicate
+# install prisma
+npm i -D prisma
+npx prisma init
+# planetscale for database
