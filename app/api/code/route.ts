@@ -4,6 +4,8 @@ import { NextFetchEvent, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat/index.mjs"; 
 
+import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+
 
 //this is what openai wants us to use in the new deployment.
 const openai = new OpenAI({
@@ -34,6 +36,14 @@ export async function POST(
             return new NextResponse("Messages are required", { status:400 });
         }
         
+        const freeTrial = await checkApiLimit();
+
+        if (!freeTrial) {
+            return new NextResponse("Free trial has expired.", { status: 403 });
+        }
+
+        await increaseApiLimit();
+
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages:[instructionMessage, ...messages]

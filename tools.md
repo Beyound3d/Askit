@@ -18,4 +18,14 @@ npm install replicate
 # install prisma
 npm i -D prisma
 npx prisma init
+Additional:
+npm install dotenv
 # planetscale for database
+npx prisma db push
+npx prisma generate
+to update: 
+1. npm i --save-dev prisma@latest
+2.  npm i @prisma/client@latest
+to run:
+npx prisma studio
+
