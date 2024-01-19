@@ -28,4 +28,6 @@ to update:
 2.  npm i @prisma/client@latest
 to run:
 npx prisma studio
+# install zustand
+npm i zustand
 
