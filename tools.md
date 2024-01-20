@@ -30,4 +30,6 @@ to run:
 npx prisma studio
 # install zustand
 npm i zustand
+# install stripe
+npm i stripe
 
