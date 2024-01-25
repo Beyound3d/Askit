@@ -3,6 +3,7 @@ import { NextFetchEvent, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 //this is what openai wants us to use in the new deployment.
 const openai = new OpenAI({
@@ -34,12 +35,17 @@ export async function POST(
         }
         
         const freeTrial = await checkApiLimit();
+        const isPro = await checkSubscription();
 
-        if (!freeTrial) {
+        if (!freeTrial && !isPro) {
             return new NextResponse("Free trial has expired.", { status: 403 });
         }
 
-        await increaseApiLimit();
+        
+
+        if(!isPro){
+            await increaseApiLimit();
+        }
 
         const response = await openai.images.generate({
             prompt,

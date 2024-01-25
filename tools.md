@@ -28,8 +28,19 @@ to update:
 2.  npm i @prisma/client@latest
 to run:
 npx prisma studio
+to reset:
+npx prisma migrate reset
 # install zustand
 npm i zustand
 # install stripe
 npm i stripe
-
+# in file explorer and cmd run 
+stripe.exe then login stripe
+# install react-hot-toast
+npm i react-hot-toast
+# INSTALL CRISP package for react
+npm i crisp-sdk-web
+# install typewriter package
+npm i typewriter-effect
+# to check errors in your project use lint
+npm run lint
