@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="![AskIt - Personal - Microsoft_ Edge 2024-04-23 23-43-30](https://github.com/Beyound3d/Askit/assets/129869652/9d1e77e5-2960-436f-8425-eced0772cb88)" />
+  <img src="askit-gif.gif" />
 </p>
 
 
