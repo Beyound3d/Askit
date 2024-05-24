@@ -10,9 +10,13 @@ We are thrilled that you'd like to contribute to AskIt! Your help is essential f
  ```
 - **Make Changes**: Make your changes in the new branch.
 - **Commit Your Changes**: Write clear and descriptive commit messages.
-``` git commit -m "Add feature XYZ"  ```
+```
+ git commit -m "Add feature XYZ"
+  ```
 - **Push Your Changes**: Push the changes to your forked repository.
-``` git push origin feature-name ```
+```
+ git push origin feature-name
+ ```
 - **Create a Pull Request**: Go to the original repository and create a pull request from your fork.
 ### Code Style
 - Follow the coding standards of the project.
